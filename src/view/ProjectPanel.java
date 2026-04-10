@@ -17,7 +17,7 @@ public class ProjectPanel extends JPanel{
     private DefaultListModel<String> listModel;
     private JButton addButton;
 
-    public ProjectPanel(){
+    public ProjectPanel(TaskPanel taskPanel){
        setLayout(new BorderLayout());
 
        JLabel lblTitle = new JLabel("Projects");
@@ -40,6 +40,16 @@ public class ProjectPanel extends JPanel{
 
        // ADD EVENT LISTENER
        addButton.addActionListener(e -> addProject());
+
+    projectList.addListSelectionListener(e -> {
+        if (!e.getValueIsAdjusting()) {
+            String selectedProject = projectList.getSelectedValue();
+
+            if (selectedProject != null) {
+                taskPanel.setTasks(selectedProject);
+            }
+        }
+    });
     }
 
     private void addProject(){

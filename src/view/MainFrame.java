@@ -51,12 +51,13 @@ public class MainFrame extends JFrame{
         JLabel lblTitle = new JLabel("SISTEM MANAJEMENT PROYEK", JLabel.CENTER);
         lblTitle.setFont(new Font("Arial", Font.BOLD, 24));
 
-        // Panel Proyek di sebelah kiri 
-        ProjectPanel projectPanel = new ProjectPanel();
-
+        
         // Panel Tasks di sebelah kanan
         TaskPanel taskPanel = new TaskPanel();
-
+        
+        // Panel Proyek di sebelah kiri 
+        ProjectPanel projectPanel = new ProjectPanel(taskPanel);
+        
         // Split Pane (Proyek dan Tasks)
         JSplitPane splitPane = new JSplitPane(
             JSplitPane.HORIZONTAL_SPLIT,
